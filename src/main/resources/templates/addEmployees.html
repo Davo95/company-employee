@@ -14,11 +14,16 @@
     <input type="text" name="email" placeholder="Email"><br>
     <input type="text" name="phoneNumber" placeholder="Phone Number"><br>
     <input type="number" name="salary" placeholder="Salary"><br>
+    <input type="password" name="password" placeholder="password"><br>
     <select name="position">
-        <option>JUNIOR</option>
-        <option>MIDL</option>
-        <option>SIGNOR</option>
+        <option value="JUNIOR">JUNIOR</option>
+        <option value="MIDL">MIDL</option>
+        <option value="SIGNOR">SIGNOR</option>
     </select>
+    <select name="roleEmployee">
+        <option value="USER">USER</option>
+        <option value="ADMIN">ADMIN</option>
+    </select><br>
     <select name="company.id">
         <option th:each="company : ${companys}" th:text="${company.name}"
                 th:value="${company.id}"></option>

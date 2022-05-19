@@ -1,7 +1,7 @@
-package com.example.springdemo.config;
+package com.example.companyemployeespring.config;
 
 
-import com.example.springdemo.security.SecurityService;
+import com.example.companyemployeespring.security.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,9 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/users/**")
+                .antMatchers(HttpMethod.GET, "/compayns/**")
                 .hasAnyAuthority("ADMIN")
-                .antMatchers(HttpMethod.GET, "/books/**")
+                .antMatchers(HttpMethod.GET, "/employees/**")
                 .hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/")
                 .permitAll()
@@ -46,8 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin();
     }
-    @Bean
-    public PasswordEncoder password(){
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder password(){
+//        return new BCryptPasswordEncoder();
+//    }
 }

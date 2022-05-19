@@ -1,6 +1,6 @@
-package com.example.springdemo.model;
+package com.example.companyemployeespring.model;
 
-public enum UserType {
+public enum RoleEmployee {
 
     USER, ADMIN
 

@@ -1,7 +1,7 @@
-package com.example.springdemo.security;
+package com.example.companyemployeespring.security;
 
-import com.example.springdemo.model.User;
-import com.example.springdemo.repository.UserRepository;
+import com.example.companyemployeespring.model.Employee;
+import com.example.companyemployeespring.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,11 +14,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SecurityService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<User> byEmail = userRepository.findByEmail(s);
+        Optional<Employee> byEmail = employeeRepository.findByEmail(s);
         if (byEmail.isEmpty()){
             throw new UsernameNotFoundException("User with " + s +" username dose net exist");
         }

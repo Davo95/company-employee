@@ -5,6 +5,7 @@ import com.example.companyemployeespring.model.Employee;
 import com.example.companyemployeespring.service.CompanyService;
 import com.example.companyemployeespring.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
     private final CompanyService companyService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/employees")
     public String company(ModelMap modelMap) {
@@ -37,6 +39,7 @@ public class EmployeeController {
 
     @PostMapping("/employees/add")
     public String employeeAddPost(@ModelAttribute Employee employee) {
+        employee.setPassword(passwordEncoder.encode(employee.getPassword()));
         employeeService.addEmployee(employee);
         return "redirect:/employees";
     }

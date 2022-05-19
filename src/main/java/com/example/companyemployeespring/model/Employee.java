@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "employees")
-public class Employee{
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,13 @@ public class Employee{
     private String name;
     private String surname;
     private String email;
+    private String password;
     private String phoneNumber;
     private double salary;
     @Enumerated(value = EnumType.STRING)
     private Position position;
+    @Enumerated(value = EnumType.STRING)
+    private RoleEmployee roleEmployee;
     @ManyToOne
     private Company company;
 
